@@ -6,6 +6,8 @@ import path from 'path'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react(),tailwindcss()],
+  // @INFO: Remove this when deploying to another service this is just for github pages
+  base: '/swipe-todo/',
   server: {
     port: 3000,
   },
