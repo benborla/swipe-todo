@@ -52,7 +52,7 @@ export const SwipeTodo = () => {
       {!showCompleted && (
         <>
           <div className="relative w-72 h-96">
-            {transitions((style, i) => (
+            {transitions((style) => (
               <animated.div style={style} className="absolute w-full h-full">
                 {activeTodos.map((todo, index) => (
                   <TodoCard key={todo.id} todo={todo} onSwipe={handleSwipe} zIndex={3 - index} index={index} />
