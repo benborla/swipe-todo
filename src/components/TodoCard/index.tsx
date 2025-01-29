@@ -31,9 +31,9 @@ export const TodoCard: React.FC<TodoCardProps> = ({ todo, onSwipe, zIndex, index
       scale: down ? 1.1 : 1,
       background: down
         ? mx > SWIPE_THRESHOLD
-          ? 'rgba(0, 255, 0, 0.2)'
+          ? 'rgba(144, 238, 144, 1)'
           : mx < -SWIPE_THRESHOLD
-            ? 'rgba(255, 0, 0, 0.2)'
+            ? 'rgba(255, 182, 193, 1)'
             : 'white'
         : 'white',
       opacity: down || !trigger ? 1 : 1,
@@ -64,11 +64,11 @@ export const TodoCard: React.FC<TodoCardProps> = ({ todo, onSwipe, zIndex, index
         left: `${index * 4}px`,
         top: `${index * 4}px`,
       }}
-      className="rounded-lg shadow-md flex flex-col justify-between p-4 cursor-grab bg-white"
+      className="rounded-lg shadow-md flex flex-col items-center justify-between p-4 cursor-grab bg-white select-none"
     >
       <h3 className="text-xl font-bold">{todo.task}</h3>
       <p className="text-gray-600">{todo.description}</p>
-      <div className="flex justify-between text-sm">
+      <div className="w-full flex items-center justify-between text-sm">
         <span className="text-red-500">← Not Done</span>
         <span className="text-green-500">Done →</span>
       </div>
