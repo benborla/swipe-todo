@@ -1,3 +1,4 @@
+import './App.css'
 import type React from 'react'
 import { SwipeTodo } from '@/components/SwipeTodo'
 

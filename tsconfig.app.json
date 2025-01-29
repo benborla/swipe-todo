@@ -26,13 +26,9 @@
     "types": [
       "vite/client",
     ],
-    "baseUrl": ".",
     "paths": {
       "@/*": [
-        "src/*"
-      ],
-      "@/components/ui/*": [
-        "src/components/ui/*"
+        "./src/*"
       ],
     },
   },

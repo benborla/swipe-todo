@@ -1,5 +1,6 @@
 import { animated, useSpring } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
+import { ChevronLeft, ChevronRight, ChevronLeftCircle } from 'lucide-react'
 
 interface TodoCardProps {
   todo: Todo
@@ -69,8 +70,12 @@ export const TodoCard: React.FC<TodoCardProps> = ({ todo, onSwipe, zIndex, index
       <h3 className="text-xl font-bold">{todo.task}</h3>
       <p className="text-gray-600">{todo.description}</p>
       <div className="w-full flex items-center justify-between text-sm">
-        <span className="text-red-500">← Not Done</span>
-        <span className="text-green-500">Done →</span>
+        <span className="text-red-500 flex items-center justify-center">
+          <ChevronLeft /><p>Not Done</p>
+        </span>
+        <span className="text-green-500 flex items-center justify-center">
+          <p>Done</p><ChevronRight />
+        </span>
       </div>
     </animated.div>
   )

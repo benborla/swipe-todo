@@ -3,6 +3,9 @@ import { animated, useTransition } from 'react-spring'
 import { TodoCard } from '@/components/TodoCard'
 import { dummyTodos } from '@/data/dummy'
 import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { TriangleAlertIcon } from 'lucide-react'
 
 export const SwipeTodo = () => {
   const [todos, setTodos] = useState<Todo[]>(dummyTodos)
@@ -49,50 +52,63 @@ export const SwipeTodo = () => {
     <div className="min-h-screen p-10 flex flex-col items-center justify-center">
       {!showCompleted && (
         <>
-          <div className="relative w-72 h-96">
-            {transitions((style) => (
-              <animated.div style={style} className="absolute w-full h-full">
-                {activeTodos.map((todo, index) => (
-                  <TodoCard key={todo.id} todo={todo} onSwipe={handleSwipe} zIndex={3 - index} index={index} />
-                ))}
-              </animated.div>
-            ))}
-            {activeTodos.length === 0 && (
-              <div className="w-full h-full bg-white rounded-lg shadow-md flex items-center justify-center">
-                <p className="text-xl text-center text-gray-500">No more todos!</p>
-              </div>
-            )}
-          </div>
-          <div className="mt-4 text-lg font-semibold text-blue-600">
+          <div className="flex flex-col items-center justify-center gap-y-5">
+            <div className="relative w-72 h-96">
+              {transitions((style) => (
+                <animated.div style={style} className="absolute w-full h-full">
+                  {activeTodos.map((todo, index) => (
+                    <TodoCard key={todo.id} todo={todo} onSwipe={handleSwipe} zIndex={3 - index} index={index} />
+                  ))}
+                </animated.div>
+              ))}
+              {activeTodos.length === 0 && (
+                <div className="w-full h-full bg-white rounded-lg shadow-md flex items-center justify-center">
+                  <p className="text-xl text-center text-gray-500">No more todos!</p>
+                </div>
+              )}
+            </div>
+            <div className="mt-2">
+              <Badge variant="outline">
             Remaining: {activeTodos.length} / {todos.length}
+              </Badge>
+            </div>
           </div>
         </>
       )}
-      <div className="flex items-center justify-center gap-x-5">
-        <button
-          className="cursor-pointer mt-8 px-6 py-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+      <div className="mt-4 flex items-center justify-center gap-x-5">
+        <Button
           onClick={() => setShowCompleted(!showCompleted)}
         >
           {showCompleted ? 'Back to Todos' : 'Completed'}
-        </button>
-        <button
-          className="cursor-pointer mt-8 px-6 py-3 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-300"
+        </Button>
+        {!showCompleted && <Button
+          variant="destructive"
           onClick={() => handleReset()}
         >
           Reset
-        </button>
+        </Button>}
       </div>
       {showCompleted && (
         <div className="mt-8 w-64">
-          <h2 className="text-2xl font-bold mb-4 text-blue-600">Completed Tasks</h2>
-          <ul className="bg-white rounded-lg shadow-md p-4">
-            {completedTodos.map((todo) => (
-              <li key={todo.id} className="line-through mb-2 text-gray-600">
-                {todo.task}
-              </li>
-            ))}
-          </ul>
-          {completedTodos.length === 0 && <p className="text-center text-gray-500">No completed tasks yet.</p>}
+          {completedTodos.length > 0 && (
+            <ul className="bg-white rounded-lg shadow-md p-4">
+              {completedTodos.map((todo) => (
+                <li key={todo.id} className="line-through mb-2 text-gray-600">
+                  {todo.task}
+                </li>
+              ))}
+            </ul>
+          )}
+          {completedTodos.length === 0 &&
+            <Alert>
+              <div className="flex items-center justify-around">
+                <TriangleAlertIcon className="h-4 w-4" />
+                <AlertDescription>
+                  No completed tasks yet.
+                </AlertDescription>
+              </div>
+            </Alert>
+          }
         </div>
       )}
     </div>
