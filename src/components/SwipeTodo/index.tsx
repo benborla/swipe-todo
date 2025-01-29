@@ -49,7 +49,6 @@ export const SwipeTodo = () => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-100 to-purple-100">
-      <h1 className="text-4xl font-bold mb-8 text-blue-600">Swipe Todo</h1>
       {!showCompleted && (
         <>
           <div className="relative w-72 h-96">
