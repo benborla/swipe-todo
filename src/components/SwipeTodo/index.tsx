@@ -4,7 +4,7 @@ import { TodoCard } from '@/components/TodoCard'
 import { dummyTodos } from '@/data/dummy'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Alert, AlertDescription} from '@/components/ui/alert'
 import { TriangleAlertIcon } from 'lucide-react'
 
 export const SwipeTodo = () => {

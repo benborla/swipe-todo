@@ -1,6 +1,6 @@
 import { animated, useSpring } from 'react-spring'
 import { useDrag } from '@use-gesture/react'
-import { ChevronLeft, ChevronRight, ChevronLeftCircle } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface TodoCardProps {
   todo: Todo
