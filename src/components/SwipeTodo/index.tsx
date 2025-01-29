@@ -18,9 +18,6 @@ export const SwipeTodo = () => {
   }, [activeTodos.length, currentIndex])
 
   const transitions = useTransition(currentIndex, {
-    // from: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
-    // enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
-    // leave: { opacity: 0, transform: 'translate3d(100%,0,0)' },
     from: { opacity: 1 },
     enter: { opacity: 1 },
     leave: { opacity: 0 },
@@ -48,7 +45,7 @@ export const SwipeTodo = () => {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-blue-100 to-purple-100">
+    <div className="min-h-screen p-10 flex flex-col items-center justify-center">
       {!showCompleted && (
         <>
           <div className="relative w-72 h-96">
