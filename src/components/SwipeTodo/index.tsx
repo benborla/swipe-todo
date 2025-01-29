@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { animated, useTransition } from 'react-spring'
 import { TodoCard } from '@/components/TodoCard'
 import { dummyTodos } from '@/data/dummy'
+import { Button } from '@/components/ui/button'
 
 export const SwipeTodo = () => {
   const [todos, setTodos] = useState<Todo[]>(dummyTodos)

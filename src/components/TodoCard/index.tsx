@@ -64,7 +64,7 @@ export const TodoCard: React.FC<TodoCardProps> = ({ todo, onSwipe, zIndex, index
         left: `${index * 4}px`,
         top: `${index * 4}px`,
       }}
-      className="rounded-lg shadow-md flex flex-col items-center justify-between p-4 cursor-grab bg-white select-none"
+      className="border border-gray-100 rounded-lg shadow-lg flex flex-col items-center justify-between p-4 cursor-grab bg-white select-none"
     >
       <h3 className="text-xl font-bold">{todo.task}</h3>
       <p className="text-gray-600">{todo.description}</p>
