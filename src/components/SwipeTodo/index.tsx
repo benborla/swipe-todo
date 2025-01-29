@@ -6,6 +6,16 @@ import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Alert, AlertDescription} from '@/components/ui/alert'
 import { TriangleAlertIcon } from 'lucide-react'
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer'
 
 export const SwipeTodo = () => {
   const [todos, setTodos] = useState<Todo[]>(dummyTodos)
@@ -75,18 +85,40 @@ export const SwipeTodo = () => {
           </div>
         </>
       )}
-      <div className="mt-4 flex items-center justify-center gap-x-5">
+      <div className="mt-4 flex items-center justify-center space-x-2">
         <Button
           onClick={() => setShowCompleted(!showCompleted)}
         >
           {showCompleted ? 'Back to Todos' : 'Completed'}
         </Button>
-        {!showCompleted && <Button
-          variant="destructive"
-          onClick={() => handleReset()}
-        >
-          Reset
-        </Button>}
+
+        <Drawer>
+          <DrawerTrigger>
+            <Button variant="outline">...</Button>
+          </DrawerTrigger>
+          <DrawerContent>
+            <div className="items-start">
+              <DrawerHeader>
+                <DrawerTitle>Settings</DrawerTitle>
+                <DrawerDescription>Customize your tasks</DrawerDescription>
+
+              </DrawerHeader>
+            </div>
+            <DrawerFooter>
+              <DrawerClose>
+                <div className="flex items-start justify-end space-x-2">
+                  {!showCompleted && <Button
+                    variant="destructive"
+                    onClick={() => handleReset()}
+                  >
+                  Reset Tasks
+                  </Button>}
+                  <Button>Close</Button>
+                </div>
+              </DrawerClose>
+            </DrawerFooter>
+          </DrawerContent>
+        </Drawer>
       </div>
       {showCompleted && (
         <div className="mt-8 w-64">
